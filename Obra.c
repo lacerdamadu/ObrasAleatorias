@@ -35,9 +35,13 @@ int NumeroAleatorio(int Limite){
     else if(Limite == 79){//Gera numero aleatorio para a coluna na tabela
         return rand() % 79;
     }
+    else if(Limite == 3){
+        return rand() % 3;
+    }
     else{//Gera numero aleatorio de figuras
         return rand() % 100;
     }
+
 }
 int* CalculaPosSimples(Obra *Quadro, int *posicao){
     posicao[0] = NumeroAleatorio(19);
@@ -110,3 +114,80 @@ void SimboloSoma(Obra *Quadro, int Quantidade){
         }
     }
 }
+int* CalculaPosX(Obra *Quadro, int *posicao){
+    //Asterisco central coordenadas
+    posicao[0] = NumeroAleatorio(19);
+    posicao[1] = NumeroAleatorio(79);
+    //Outros asteriscos
+    posicao[2] = posicao[0] - 1;
+    posicao[3] = posicao[1] - 1;
+    posicao[4] = posicao[0] - 1;
+    posicao[5] = posicao[1] + 1;
+    posicao[6] = posicao[0] + 1;
+    posicao[7] = posicao[1] - 1;
+    posicao[8] = posicao[0] + 1;
+    posicao[9] = posicao[1] + 1;
+
+    int contador = 0, linha = 0, coluna = 1;
+    for(int i=0; i<5; i++){
+        if(Quadro->Tela[(posicao[linha])][(posicao[coluna])] != ' '){
+            contador ++;
+        }
+        linha += 2;
+        coluna += 2;
+    }
+    if(contador == 0){
+        return posicao;
+    }
+    else{
+        return CalculaPosX(Quadro, posicao);
+    }
+}
+void SimboloX(Obra *Quadro, int Quantidade){
+    int pos3[10];
+    int *posicao3;
+    posicao3 = pos3;
+    if(Quantidade <= 0){//Se o usuário digitar um número menor ou igual a zero, será gerado um número de figuras aleatório entre 1 e 100
+        Quantidade = NumeroAleatorio(100);
+    }
+    else{
+        for(int i=0; i<Quantidade; i++){
+            CalculaPosX(Quadro, posicao3);
+            Quadro->Tela[(posicao3[0])][(posicao3[1])] = '*';
+            Quadro->Tela[(posicao3[2])][(posicao3[3])] = '*';
+            Quadro->Tela[(posicao3[4])][(posicao3[5])] = '*';
+            Quadro->Tela[(posicao3[6])][(posicao3[7])] = '*';
+            Quadro->Tela[(posicao3[8])][(posicao3[9])] = '*';
+        }
+    }
+}
+
+void Aleatorio(Obra *Quadro, int Quantidade){
+    if (Quantidade <= 0) {
+        Quantidade = NumeroAleatorio(100); // Se for aleatório, define uma quantidade
+    }
+    int totaldefiguras = 0;
+    while (totaldefiguras < Quantidade) {
+        int opcao = rand() % 3;
+        int restante = Quantidade - totaldefiguras;
+        int NumFigurasAtual;
+        if (restante > 1) {
+            NumFigurasAtual = (rand() % restante) + 1;
+        } else {
+            NumFigurasAtual = 1;
+        }
+        switch (opcao) {
+            case 0:
+                AsteriscoSimples(Quadro, NumFigurasAtual);
+                break;
+            case 1:
+                SimboloSoma(Quadro, NumFigurasAtual);
+                break;
+            case 2:
+                SimboloX(Quadro, NumFigurasAtual);
+                break;
+        }
+        totaldefiguras += NumFigurasAtual;
+    }
+}
+

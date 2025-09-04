@@ -7,7 +7,7 @@ typedef struct  Obra{
 
 void InicializaObra(Obra *Quadro);
 void ImprimiObra(Obra Quadro);
-int NumeroAleatório(int Limite);
+int NumeroAleatorio(int Limite);
 
 //Funções utilizadas na criação da opção 1
 void AsteriscoSimples(Obra *Quadro, int Quantidade);
@@ -16,5 +16,13 @@ int* CalculaPosSimples(Obra *Quadro, int *posicao);
 //Funções utilizadas na criação da opção 2
 void SimboloSoma(Obra *Quadro, int Quantidade);
 int* CalculaPosSoma(Obra *Quadro, int *posicao);
+
+//Funções utilizadas na criação da opção 3
+void SimboloX(Obra *Quadro, int Quantidade);
+int* CalculaPosX(Obra *Quadro, int *posicao);
+
+//Funções utilizadas na criação da opção 4
+void Aleatorio(Obra *Quadro, int Quantidade);
+
 
 #endif

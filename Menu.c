@@ -30,8 +30,12 @@ void Central(Obra *Quadro){
             ImprimiObra(*Quadro);
             break;
         case 3:
+            SimboloX(Quadro, quantidade);
+            ImprimiObra(*Quadro);
             break;
         case 4:
+            Aleatorio(Quadro, quantidade);
+            ImprimiObra(*Quadro);
             break;
         case 5:
             break;
@@ -44,16 +48,23 @@ void Central(Obra *Quadro){
     printf("Deseja realizar um novo quadro com estes mesmos valores?(S/N):");
     scanf("%c", &c);
     if(c == 'S'){
+        InicializaObra(Quadro);
         switch (escolha){
             case 1:
                 AsteriscoSimples(Quadro, quantidade);
                 ImprimiObra(*Quadro);
                 break;
             case 2:
+                SimboloSoma(Quadro, quantidade);
+                ImprimiObra(*Quadro);
                 break;
             case 3:
+                SimboloX(Quadro, quantidade);
+                ImprimiObra(*Quadro);
                 break;
             case 4:
+                Aleatorio(Quadro, quantidade);
+                ImprimiObra(*Quadro);
                 break;
             case 5:
                 break;
