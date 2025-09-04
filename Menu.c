@@ -26,6 +26,8 @@ void Central(Obra *Quadro){
             ImprimiObra(*Quadro);
             break;
         case 2:
+            SimboloSoma(Quadro, quantidade);
+            ImprimiObra(*Quadro);
             break;
         case 3:
             break;
