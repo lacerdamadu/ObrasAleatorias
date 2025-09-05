@@ -371,8 +371,8 @@ void Coracao(Obra *Quadro, int Quantidade){
             return;
         }
         else{
-        Quadro->Tela[(posicao[0])][(posicao[1])] = '<';
-        Quadro->Tela[(posicao[2])][(posicao[3])] = '3';
+            Quadro->Tela[(posicao[0])][(posicao[1])] = '<';
+            Quadro->Tela[(posicao[2])][(posicao[3])] = '3';
         }
     }
 }
