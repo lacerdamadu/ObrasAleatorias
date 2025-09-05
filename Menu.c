@@ -4,17 +4,16 @@
 void Central(Obra *Quadro){
     InicializaObra(Quadro);
     int escolha, quantidade;
-    printf("PROGRAMA GERADOR DE OBRA DE ARTE:\n"
-            "=================================\n"
+    printf("Programa Gerador de Obra De Arte:\n"
             "Escolha o tipo de figura basica a ser usada para criar a obra:\n"
-            "1 - asterisco simples.\n"
-            "2 - simbolo de soma com asteriscos.\n"
-            "3 - letra X com asteriscos.\n"
-            "4 - figuras aleatorias\n"
-            "5 - figura surpresa\n");
-    printf("Digite o tipo de figura basica desejada:");
+            "   1 - asterisco simples.\n"
+            "   2 - simbolo de soma com asteriscos.\n"
+            "   3 - letra X com asteriscos.\n"
+            "   4 - figuras aleatorias\n"
+            "   5 - figura surpresa\n");
+    printf("Digite o tipo de figura basica desejada: ");
     scanf("%d", &escolha);
-    printf("Digite a quantidade de figuras (menor ou igual a zero para aleatorio):");
+    printf("Digite a quantidade de figuras (menor ou igual a zero para aleatorio): ");
     scanf("%d", &quantidade);
 
     if(quantidade > 100){//Se o usuário digitar um número maior do que 100, será considerado o número 100.
@@ -50,7 +49,7 @@ void Central(Obra *Quadro){
             }
             Gatinho(Quadro, quant1);
             Coracao(Quadro, quant2);
-            ImprimiObra(*Quadro);
+            ImprimiColorido(*Quadro);
             break;
         default:
             break;
@@ -58,7 +57,7 @@ void Central(Obra *Quadro){
     char c;
     printf("\n");
     scanf("%c", &c);
-    printf("Deseja realizar um novo quadro com estes mesmos valores?(S/N):");
+    printf("Deseja realizar um novo quadro com estes mesmos valores?(S/N): ");
     scanf("%c", &c);
     if(c == 'S'){
         InicializaObra(Quadro);
@@ -91,7 +90,7 @@ void Central(Obra *Quadro){
                 }
                 Gatinho(Quadro, quant1);
                 Coracao(Quadro, quant2);
-                ImprimiObra(*Quadro);
+                ImprimiColorido(*Quadro);
                 break;
             default:
                 break;

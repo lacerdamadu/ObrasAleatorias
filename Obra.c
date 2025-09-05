@@ -29,10 +29,10 @@ void ImprimiObra(Obra Quadro){
     }
 }
 int NumeroAleatorio(int Limite){
-    if(Limite == 19){//Gera numero aleatorio para a linha na tabela
+    if(Limite == 19){ //Gera numero aleatorio para a linha na tabela
         return rand() % 19;
     }
-    else if(Limite == 79){//Gera numero aleatorio para a coluna na tabela
+    else if(Limite == 79){ //Gera numero aleatorio para a coluna na tabela
         return rand() % 79;
     }
     else if(Limite == 3){
@@ -376,4 +376,73 @@ void Coracao(Obra *Quadro, int Quantidade){
         }
     }
 }
-
+void ImprimiColorido(Obra Quadro) {
+    for(int i = 0; i < 20; i++) {
+        for(int j = 0; j < 80; j++) {
+            char caractere = Quadro.Tela[i][j];
+            if (caractere == '.' || caractere == '*' || caractere == '=' || 
+                caractere == '(' || caractere == ')' || caractere == '_' ||
+                caractere == '/' || caractere == '\\') {
+                
+                int cor_index = (i * 80 + j) % 6;
+                const char* CorGato;
+                const char* CorOlho;
+                
+                switch(cor_index) {
+                    case 0: 
+                        CorGato = CINZA_GATO; 
+                        CorOlho = RESET;
+                        break;   
+                    case 1: 
+                        CorGato = LARANJA_GATO;
+                        CorOlho = AZUL_OLHO;
+                        break;     
+                    case 2: 
+                        CorGato = MARROM_GATO; 
+                        CorOlho = AMARELO_OLHO;
+                        break;    
+                    case 3: 
+                        CorGato = CREME_GATO; 
+                        CorOlho = VERDE_OLHO;
+                        break;    
+                    case 4: 
+                        CorGato = PRETO_GATO;
+                        CorOlho = AMARELO_OLHO; 
+                        break;     
+                    case 5: 
+                        CorGato = BRANCO_GATO; 
+                        CorOlho = AZUL_OLHO;
+                        break;   
+                    default: 
+                        CorGato = RESET;
+                        CorOlho = VERDE_OLHO;
+                }
+                if(caractere == '.'){
+                    printf("%c" RESET, caractere);
+                }
+                else if(caractere == '*'){
+                    printf("%s%c" RESET, CorOlho, caractere);
+                }
+                else if(caractere == '*' || caractere == '='){
+                    printf("%s%c" RESET, CorGato, caractere);
+                }
+                else if(caractere == '(' || caractere == ')'){
+                    printf("%s%c" RESET, CorGato, caractere);
+                }
+                else{
+                    printf("%s%c" RESET, CorGato, caractere);
+                }
+            }
+            else if(caractere == '<' || caractere == '3') {
+                printf(VERMELHO "%c" RESET, caractere);
+            }
+            else if(caractere == '|' || caractere == '-'){
+                printf(VERMELHO"%c" RESET, caractere);
+            }
+            else{
+                printf("%c" RESET, caractere);
+            }
+        }
+        printf("\n");
+    }
+}
