@@ -10,7 +10,8 @@ void Central(Obra *Quadro){
             "1 - asterisco simples.\n"
             "2 - simbolo de soma com asteriscos.\n"
             "3 - letra X com asteriscos.\n"
-            "4 - figuras aleatorias\n");
+            "4 - figuras aleatorias\n"
+            "5 - figura surpresa\n");
     printf("Digite o tipo de figura basica desejada:");
     scanf("%d", &escolha);
     printf("Digite a quantidade de figuras (menor ou igual a zero para aleatorio):");
@@ -38,6 +39,18 @@ void Central(Obra *Quadro){
             ImprimiObra(*Quadro);
             break;
         case 5:
+            int quant1 = 0, quant2 = 0;
+            if(quantidade % 2 != 0){
+                quant1 = quantidade / 2;
+                quant2 = quant1 + 1;
+            }
+            else{
+                quant1 = quantidade / 2;
+                quant2 = quant1;
+            }
+            Gatinho(Quadro, quant1);
+            Coracao(Quadro, quant2);
+            ImprimiObra(*Quadro);
             break;
         default:
             break;
@@ -67,6 +80,18 @@ void Central(Obra *Quadro){
                 ImprimiObra(*Quadro);
                 break;
             case 5:
+                int quant1 = 0, quant2 = 0;
+                if(quantidade % 2 != 0){
+                    quant1 = quantidade / 2;
+                    quant2 = quant1 + 1;
+                }
+                else{
+                    quant1 = quantidade / 2;
+                    quant2 = quant1;
+                }
+                Gatinho(Quadro, quant1);
+                Coracao(Quadro, quant2);
+                ImprimiObra(*Quadro);
                 break;
             default:
                 break;
