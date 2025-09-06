@@ -35,7 +35,7 @@ int NumeroAleatorio(int Limite){
     else if(Limite == 79){ //Gera numero aleatorio para a coluna na tabela
         return rand() % 79;
     }
-    else if(Limite == 3){
+    else if(Limite == 3){//Gera numero para a escolha de qual simbolo utilizar
         return rand() % 3;
     }
     else{//Gera numero aleatorio de figuras
@@ -100,12 +100,10 @@ int* CalculaPosSoma(Obra *Quadro, int *posicao){
     posicao[4] = posicao[0]; // Asterisco esq/dir coordenada linha
     posicao[3] = posicao[1] - 1; // Asterisco esquerda coordenada coluna
     posicao[5] = posicao[1] + 1; // Asterisco direita coordenada coluna
-
     posicao[7] = posicao[1];
     posicao[9] = posicao[1]; //Asterisco cima/baixo coordenada coluna
     posicao[6] = posicao[0] - 1; //Asterisco em cima coordenada linha
     posicao[8] = posicao[0] + 1; //Asterisco em baixo coordenada linha
-
     int contador = 0, linha = 0, coluna = 1;
     for(int i=0; i<5; i++){
         if(Quadro->Tela[(posicao[linha])][(posicao[coluna])] != ' '){
@@ -114,9 +112,7 @@ int* CalculaPosSoma(Obra *Quadro, int *posicao){
         linha += 2;
         coluna += 2;
     }
-    if(contador == 0){
-        return posicao;
-    }
+    if(contador == 0){ return posicao; }
     else{
         if(VerificaCheia(Quadro)){
             posicao[0] = -1;
@@ -216,7 +212,7 @@ void Aleatorio(Obra *Quadro, int Quantidade){
     }
     int totaldefiguras = 0;
     while (totaldefiguras < Quantidade) {
-        int opcao = rand() % 3;
+        int opcao = NumeroAleatorio(3);
         int restante = Quantidade - totaldefiguras;
         int NumFigurasAtual;
         if (restante > 1) {
@@ -383,7 +379,6 @@ void ImprimiColorido(Obra Quadro) {
             if (caractere == '.' || caractere == '*' || caractere == '=' || 
                 caractere == '(' || caractere == ')' || caractere == '_' ||
                 caractere == '/' || caractere == '\\') {
-                
                 int cor_index = (i * 80 + j) % 6;
                 const char* CorGato;
                 const char* CorOlho;

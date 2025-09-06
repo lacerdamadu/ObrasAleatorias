@@ -64,6 +64,7 @@ void Central(Obra *Quadro){
         scanf("%c", &c);
         if(c == 'S'){
             InicializaObra(Quadro);
+            int quant1 = 0, quant2 = 0;
             switch (escolha){
                 case 1:
                     AsteriscoSimples(Quadro, quantidade);
@@ -82,7 +83,6 @@ void Central(Obra *Quadro){
                     ImprimiObra(*Quadro);
                     break;
                 case 5:
-                    int quant1 = 0, quant2 = 0;
                     if(quantidade % 2 != 0){
                         quant1 = quantidade / 2;
                         quant2 = quant1 + 1;
